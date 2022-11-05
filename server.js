@@ -21,7 +21,8 @@ const bankSchema=new mongoose.Schema({
     },
     accno:{
         type:String,
-        required:true
+        required:true,
+        unique:true
     },
     balance:{
         type:String,
@@ -54,8 +55,22 @@ app.get('/',function(req,res){ //used to identify user sessions
     res.sendFile(path+"/index.html");
 });
 
+app.post('/trans', function(req,res){
+    console.log("hii");
+})
+
 app.set('view engine', 'hbs') //view engine for handlebars page
 
-app.post('/customers',function(req,res){
-    res.render(path+"/customers.hbs");
+app.post('/customers',async function(req,res){
+    // const temp=new bank({
+    //     name:"Shruti",
+    //     accno:9009,
+    //     balance:3777697,
+    //     id:10
+    // })
+    // await temp.save();
+    const useremail=await bank.find();
+    res.render(path+"/customers.hbs",{info:useremail});
 })
+
+

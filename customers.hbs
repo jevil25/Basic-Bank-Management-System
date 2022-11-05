@@ -37,71 +37,41 @@
     <!-- navbar ends here  -->
 
     <div class="my-info text-center">
-        <h2>Name: Varshith</h2>
-        <h4>Net Bank Balance: $<span id="myAccountBalance">5000</span></h4>
-
         <button class="btn btn-info" data-toggle="modal" data-target="#sendMoney">Send Money</button>
-        <a class="btn btn-info" href="" data-toggle="modal" data-target="#transactionHistory">See All Transactions</a>
     </div>
 
     <!-- Modal send money -->
-    <div class="modal fade" id="sendMoney" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Send Money</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <form action="">
-                        <div class="input-group mb-3">
-                            <input type="text" id="enterName" class="form-control" placeholder="Recipient's accno"
-                                aria-label="Recipient's accno" aria-describedby="basic-addon2" name="accno">
+        <div class="modal fade" id="sendMoney" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Send Money</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                        <div class="modal-body">
+                                <div class="input-group mb-3">
+                                    <input type="text" id="enterName" class="form-control" placeholder="Sender's accno"
+                                        aria-label="Recipient's accno" aria-describedby="basic-addon2" name="saccno">
+                                </div>
+                                <div class="input-group mb-3">
+                                    <div class="input-group mb-3">
+                                    <input type="text" id="enterName" class="form-control" placeholder="Recievers's accno"
+                                        aria-label="Recipient's accno" aria-describedby="basic-addon2" name="raccno">
+                                </div>
+                                    <input type="number" id="enterAmount" class="form-control" placeholder=" Enter Amount"
+                                        aria-label="Amount (to the nearest dollar)" name="amount">$
+                                </div>
                         </div>
-                        <div class="input-group mb-3">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text">$</span>
-                            </div>
-                            <input type="number" id="enterAmount" class="form-control" placeholder=" Enter Amount"
-                                aria-label="Amount (to the nearest dollar)" name="amount">
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <form action="/trans" method="post"><button class="btn btn-success" data-dismiss="modal">Send Money</button></form>
                         </div>
-
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" onclick="TransferMoney()" class="btn btn-success" data-dismiss="modal">Send
-                        Money</button>
                 </div>
             </div>
         </div>
-    </div>
-
-    <!-- Modal transaction History-->
-    <div class="modal fade" id="transactionHistory" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Transaction History</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <ol id="transaction-history-body">
-
-                    </ol>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                </div>
-            </div>
-        </div>
-    </div>
 
     <!-- table  -->
     <div class="container">
@@ -121,7 +91,7 @@
                             <td scope="row">{{id}}</td>
                             <td>{{name}}</td>
                             <td>{{accno}}</td>
-                            <td>{{bal}}</td>
+                            <td>{{balance}}</td>
                         </tr>
                     {{/each}}
                 </tbody>
