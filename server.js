@@ -70,7 +70,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.json());
 
-app.listen(3001,function(){
+app.listen(process.env.PORT || 3001,function(){
     console.log("server is live on 3001")
 });
 
