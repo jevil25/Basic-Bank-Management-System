@@ -1,0 +1,82 @@
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Accounts | Basic Banking System</title>
+    <link rel="stylesheet"
+        href="https://unpkg.com/bootstrap-material-design@4.1.1/dist/css/bootstrap-material-design.min.css">
+    <link rel="stylesheet" href="assets/css/customer.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Sansita+Swashed:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <!-- navbar starts here  -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="./index.html">Sparks Bank</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="./index.html">Home </a>
+                </li>
+                <li class="nav-item  active">
+                    <button class="nav-link" onclick="sendMoney()"
+                        style="color: rgb(37, 36, 36)!important; background-color: rgb(180, 178, 178);">Send Money</button>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <!-- navbar ends here  -->
+
+    <div class="info">
+        {{#each info}}
+            {{#if name}}
+                <h2>Name: {{name}}</h2><br>
+                <h2>Account number: {{accno}}</h2><br>
+                <h2>Balance: {{balance}}</h2><br>
+                <h2>Email: {{email}}</h2><br>
+            {{/if}}
+        {{/each}}
+    </div>
+
+    <form action="/trans" method="post">
+        <div class="transferblock">
+            {{#each info}}
+                {{#if name}}
+                    <h4>Senders accno: {{accno}}</h4><br>
+                    <input type="number" value={{accno}} placeholder="Senders ACCNO" name="saccno" class="send"><br>
+                    <select placeholder="Recievers ACCNO" name="raccno" class="rec">
+                        <option value="1234">1234</option>
+                        <option value="2222">2222</option>
+                        <option value="1111">1111</option>
+                        <option value="3333">3333</option>
+                        <option value="4444">4444</option>
+                        <option value="4456">4456</option>
+                        <option value="4436">4436</option>
+                        <option value="8909">8909</option>
+                        <option value="9909">9909</option>
+                        <option value="9009">9009</option>
+                    </select><br>
+                    <input type="number" placeholder="amount" name="amount" class="rec"><br>
+                    <button class="btn custombtn">Transfer Money</button>
+                {{/if}}
+        {{/each}}
+        </div>
+    </form>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
+    <script src="assets/js/script.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://unpkg.com/popper.js@1.12.6/dist/umd/popper.js"></script>
+    <script src="https://unpkg.com/bootstrap-material-design@4.1.1/dist/js/bootstrap-material-design.js"></script>
+</body>
+</html>

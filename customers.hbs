@@ -36,43 +36,6 @@
     </nav>
     <!-- navbar ends here  -->
 
-    <div class="my-info text-center">
-        <button class="btn btn-info" data-toggle="modal" data-target="#sendMoney">Send Money</button>
-    </div>
-
-    <!-- Modal send money -->
-        <div class="modal fade" id="sendMoney" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-            aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Send Money</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                        <div class="modal-body">
-                                <div class="input-group mb-3">
-                                    <input type="text" id="enterName" class="form-control" placeholder="Sender's accno"
-                                        aria-label="Recipient's accno" aria-describedby="basic-addon2" name="saccno">
-                                </div>
-                                <div class="input-group mb-3">
-                                    <div class="input-group mb-3">
-                                    <input type="text" id="enterName" class="form-control" placeholder="Recievers's accno"
-                                        aria-label="Recipient's accno" aria-describedby="basic-addon2" name="raccno">
-                                </div>
-                                    <input type="number" id="enterAmount" class="form-control" placeholder=" Enter Amount"
-                                        aria-label="Amount (to the nearest dollar)" name="amount">$
-                                </div>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <form action="/trans" method="post"><button class="btn btn-success" data-dismiss="modal">Send Money</button></form>
-                        </div>
-                </div>
-            </div>
-        </div>
-
     <!-- table  -->
     <div class="container">
         <div class="table-responsive">
@@ -81,8 +44,10 @@
                     <tr class="table-danger">
                         <th scope="col">Sl. No.</th>
                         <th scope="col">Name</th>
-                        <th scope="col">E-mail</th>
+                        <th scope="col">Account number</th>
                         <th scope="col">Bank Balance(in $)</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">View</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -92,15 +57,19 @@
                             <td>{{name}}</td>
                             <td>{{accno}}</td>
                             <td>{{balance}}</td>
+                            <td>{{email}}</td>
+                            <td><form action="/expand" method="post"><button class="expand">expand</button><br>
+                            <input type="number" value="{{id}}" name="id" class="hid"></form></td>
                         </tr>
                     {{/each}}
                 </tbody>
             </table>
         </div>
     </div>
-
+    <script src="https://twitter.github.io/typeahead.js/js/handlebars.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
     <script src="assets/js/script.js"></script>
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
     <script src="https://unpkg.com/popper.js@1.12.6/dist/umd/popper.js"></script>
     <script src="https://unpkg.com/bootstrap-material-design@4.1.1/dist/js/bootstrap-material-design.js"></script>
 </body>

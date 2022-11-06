@@ -41,3 +41,63 @@ body{
 .btn-info:hover{
     background-color: rgb(67, 83, 230)!important;
 }
+
+.custombtn{
+    background-color: #fff;
+    color:chartreuse;
+}
+
+.transferblock{
+    text-align: center;
+    position: relative;
+    top:20px;
+    margin-bottom: 30px;
+}
+
+.send,.rec{
+    border: transparent;
+    border-bottom: 1px solid white;
+    background: transparent;
+    margin-bottom: 10px;
+    padding:10px;
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+.send:hover,.rec:hover{
+    background-color: #fff;
+}
+
+.send:active,.rec:active{
+    border: transparent;
+}
+
+.expand{
+    border: none;
+    background-color: darkcyan;
+    color:black;
+}
+
+.expand:hover{
+    background-color: coral;
+    color:white;
+}
+
+.hid{
+    visibility: hidden;
+    display: none;
+}
+
+.send{
+    display: none;
+    visibility: hidden;
+}
+
+.info{
+    text-align: center;
+}
+
+.rec{
+    position: relative;
+    bottom: 30px;
+}
