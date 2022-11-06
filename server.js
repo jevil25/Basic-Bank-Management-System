@@ -75,7 +75,7 @@ app.listen(process.env.PORT || 3001,function(){
 });
 
 app.get('/',function(req,res){ //used to identify user sessions
-    res.sendFile(path+"/index.html");
+    res.sendFile("/index.html");
 });
 
 app.post('/trans', async function(req,res){
@@ -110,7 +110,7 @@ app.post('/trans', async function(req,res){
         console.log("low balance")
     }
     const useremail=await bank.find();
-    res.render(path+"/customers.hbs",{info:useremail});
+    res.render("customers",{info:useremail});
     }else{
         res.send("invalid acc no")
     }
@@ -130,17 +130,16 @@ app.post('/customers',async function(req,res){
     // })
     // await temp.save();
     const useremail=await bank.find();
-    res.render(path+"/customers.hbs",{info:useremail});
+    res.render("customers",{info:useremail});
 })
 
 app.post('/expand',async function(req,res){
     aid=req.body.id;
-    console.log(aid);
     const user=await bank.findOne({id:aid});
-    res.render(path+"/transfer.hbs",{info:user});
+    res.render("transfer",{info:user});
 })
 
 app.post('/history',async function(req,res){
     const user=await history.find();
-    res.render(path+"/history.hbs",{info:user});
+    res.render("history",{info:user});
 })
