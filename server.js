@@ -42,9 +42,25 @@ const bankSchema=new mongoose.Schema({
     }
 });
 
-const bank = new mongoose.model("accounts", bankSchema);
+const historySchema=new mongoose.Schema({
+    saccount:{
+        type:Number,
+        required:true
+    },
+    raccount:{
+        type:Number,
+        required:true
+    },
+    amount:{
+        type:Number,
+        required:true
+    }
+})
 
-module.exports={bank}; //sends data to database
+const bank = new mongoose.model("accounts", bankSchema);
+const history = new mongoose.model("history",historySchema);
+
+module.exports={bank,history}; //sends data to database
 
 const app=express();
 app.set('view engine', 'hbs') //view engine for handlebars page
@@ -83,7 +99,14 @@ app.post('/trans', async function(req,res){
             $set:{
                 balance:send.balance                //balance field gets updated in db
             }
-    })}else{
+    })
+    const transdat=new history({
+        amount:amount,
+        saccount:senderacc,
+        raccount:recacc
+    })
+    await transdat.save();
+    }else{
         console.log("low balance")
     }
     const useremail=await bank.find();
@@ -115,4 +138,9 @@ app.post('/expand',async function(req,res){
     console.log(aid);
     const user=await bank.findOne({id:aid});
     res.render(path+"/transfer.hbs",{info:user});
+})
+
+app.post('/history',async function(req,res){
+    const user=await history.find();
+    res.render(path+"/history.hbs",{info:user});
 })

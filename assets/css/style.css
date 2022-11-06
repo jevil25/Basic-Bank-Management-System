@@ -32,6 +32,7 @@ body{
 .nav-link{
     color: #5f6368!important;
     font-family: 'Noto Sans JP', sans-serif;
+    border: transparent;
 }
 
 .nav-link:hover{
